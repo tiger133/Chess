@@ -12,7 +12,7 @@ public class GameLogic {
 	private Player blackPlayer;
 	private GameState gameState;
 	private boolean whitePlaying = true;
-	private Move bufferMove;
+	private Move moveBuffer = new Move();
 	
 	
 	public GameLogic()
@@ -42,10 +42,31 @@ public class GameLogic {
 	
 	public void select(int x, int y)
 	{
-		chessBoard.select(x,y,true);
+		boolean isPlaced = chessBoard.select(x,y,true);
+		if((moveBuffer.fromPosition()==null)&&isPlaced) moveBuffer.setFirstPosition(new Position(x,y));
+		else if((!isPlaced)&&moveBuffer.toPosition()==null&&moveBuffer.toPosition()==null){
+			unselect(x,y);
+			moveBuffer.clear();
+			return;
+		}
+		else if((!isPlaced)&&moveBuffer.toPosition()==null) 
+			 moveBuffer.setSecondPosition(new Position(x,y));
+		//Turn : 
+		
+		
+		//End turn;
+		 if(moveBuffer.bothPositions())
+		{
+			
+			unselect(moveBuffer.fromPosition().getX(),moveBuffer.fromPosition().getY());
+			unselect(moveBuffer.toPosition().getX(),moveBuffer.toPosition().getY());
+			moveBuffer.clear();
+		}
+		
+		
 	}
 	
-	private void unselect(int x, int y)
+	public void unselect(int x, int y)
 	{
 		chessBoard.select(x,y,false);
 	}

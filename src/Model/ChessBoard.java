@@ -118,9 +118,10 @@ public class ChessBoard
 	{
 		toRemoveFrom.removePiece();
 	}
-	public void select(int x, int y, boolean selected)
+	public boolean select(int x, int y, boolean selected)
 	{
 		gird[x][y].setSelected(selected);
+		return gird[x][y].isPlaced();
 	}
 
 }

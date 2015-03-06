@@ -9,8 +9,18 @@ public class Move {
 	{
 		this.fromPosition = fromPosition;
 		this.toPosition = toPosition;
+		this.piece = piece.clonePiece();	
+	}
+	public  Move(Position fromPosition,Position toPosition,Piece piece,Piece knockedOut)
+	{
+		this.fromPosition = fromPosition;
+		this.toPosition = toPosition;
 		this.piece = piece.clonePiece();
-	
+		this.knockedOut = knockedOut.clonePiece();
+	}
+	public Move()
+	{
+		//zeby buffer dziala
 	}
 	public Position fromPosition()
 	{
@@ -43,5 +53,14 @@ public class Move {
 	public void setKnockedOut(Piece knockedOut)
 	{
 		this.knockedOut = knockedOut;
+	}
+	public void clear()
+	{
+		toPosition = null;
+		fromPosition = null;
+	}
+	public boolean bothPositions()
+	{
+		return ((toPosition != null) && (fromPosition !=null)); 
 	}
 }
