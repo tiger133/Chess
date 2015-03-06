@@ -19,5 +19,20 @@ public class Move {
 	{
 		return toPosition;
 	}
-	
+	public Position getFirst()
+	{
+		return fromPosition;
+	}
+	public Position getSecond()
+	{
+		return toPosition;
+	}
+	public void setFirstPosition(Position from)
+	{
+		fromPosition = new Position(from);
+	}
+	public void setSecondPosition(Position sec)
+	{
+		toPosition = new Position(sec);
+	}
 }

@@ -12,7 +12,9 @@ public class GameLogic {
 	private Player blackPlayer;
 	private GameState gameState;
 	private boolean whitePlaying = true;
-
+	private Move bufferMove;
+	
+	
 	public GameLogic()
 	{
 		chessBoard = new ChessBoard();
@@ -32,14 +34,17 @@ public class GameLogic {
 	{
 		gameState = GameState.InPlay;
 	}
-	public void select(int x, int y)
-	{
-		chessBoard.select(x,y,true);
-	}
 	public GameState getGameState()
 	{
 		return gameState;
 	}
+	
+	
+	public void select(int x, int y)
+	{
+		chessBoard.select(x,y,true);
+	}
+	
 	private void unselect(int x, int y)
 	{
 		chessBoard.select(x,y,false);
