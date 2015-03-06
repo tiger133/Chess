@@ -36,6 +36,10 @@ public class GameLogic {
 	{
 		chessBoard.select(x,y,true);
 	}
+	public GameState getGameState()
+	{
+		return gameState;
+	}
 	private void unselect(int x, int y)
 	{
 		chessBoard.select(x,y,false);
