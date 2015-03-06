@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import Controller.GameEngine;
 
-//TEST CZY WSZYSTKO DZIA£A :DDD LUBIE PIOTRUSIA :))))) JEST CUDOWNY :*
 
 public class Chess extends Applet implements Runnable{
 
