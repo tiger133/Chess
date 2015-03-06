@@ -4,6 +4,7 @@ public class Move {
 	private Position fromPosition;
 	private Position toPosition;
 	private Piece piece;
+	private Piece knockedOut;
 	public  Move(Position fromPosition,Position toPosition,Piece piece)
 	{
 		this.fromPosition = fromPosition;
@@ -19,14 +20,6 @@ public class Move {
 	{
 		return toPosition;
 	}
-	public Position getFirst()
-	{
-		return fromPosition;
-	}
-	public Position getSecond()
-	{
-		return toPosition;
-	}
 	public void setFirstPosition(Position from)
 	{
 		fromPosition = new Position(from);
@@ -34,5 +27,21 @@ public class Move {
 	public void setSecondPosition(Position sec)
 	{
 		toPosition = new Position(sec);
+	}
+	public Piece getPiece()
+	{
+		return piece;
+	}
+	public void setPiece(Piece piece)
+	{
+		this.piece = piece;
+	}
+	public Piece getKnockedOut()
+	{
+		return knockedOut;
+	}
+	public void setKnockedOut(Piece knockedOut)
+	{
+		this.knockedOut = knockedOut;
 	}
 }
