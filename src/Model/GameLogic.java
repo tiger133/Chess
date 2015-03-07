@@ -13,12 +13,13 @@ public class GameLogic {
 	private GameState gameState;
 	private boolean whitePlaying = true;
 	private MoveBuffer moveBuffer;
-	//private MoveValidator moveValidator;
+	private MoveValidator moveValidator;
 	
 	public GameLogic()
 	{
 		chessBoard = new ChessBoard();
 		moveBuffer = new MoveBuffer(chessBoard);
+		moveValidator = new MoveValidator(chessBoard);
 		gameState = GameState.BeforeGame;
 		whitePlayer = new Player(true);
 		blackPlayer = new Player(false);
@@ -42,10 +43,7 @@ public class GameLogic {
 	{
 		
 		moveBuffer.add(x,whitePlaying);
-		if(moveBuffer.isOneSet())
-		{
-			moveValidator.availableTurns();
-		}
+		
 		if(moveBuffer.isBothSet())
 		{
 			//TO-DO
@@ -53,6 +51,9 @@ public class GameLogic {
 			
 			
 			moveBuffer.clearBuffer();
+		}else if(moveBuffer.isOneSet())
+		{
+			moveBuffer.addAvailableTurns(moveValidator.availableTurns(x,whitePlaying));;
 		}
 	}
 	
