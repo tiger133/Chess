@@ -46,7 +46,7 @@ public class GameLogic {
 		
 		if(moveBuffer.isBothSet())
 		{
-			//TO-DO
+			chessBoard.movePiece(moveBuffer.getFirst(), moveBuffer.getSecond());
 			
 			
 			
