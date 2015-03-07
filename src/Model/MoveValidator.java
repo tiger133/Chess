@@ -9,6 +9,14 @@ public class MoveValidator {
 	{
 		this.chessBoard = chessBoard;
 	}
+	public boolean inBounds(Position a)
+	{
+		return (a.getX()>=0 && a.getX()<=7 && a.getY()>=0 && a.getY()<=7);
+	}
+	public boolean outOfBounds(Position a)
+	{
+		return !inBounds(a);
+	}
 	public List<Position> availableTurns(Position x)
 	{
 		switch(chessBoard.getPiece(x).getPieceType())
@@ -31,23 +39,17 @@ public class MoveValidator {
 	public List<Position> availablePawn(Position x)
 	{
 		boolean isWhite = chessBoard.getPiece(x).isWhite();
+		int step = isWhite ? -1 : 1;
+		int secondLine = isWhite ? 6 : 1;
 		List<Position> result = new ArrayList<Position>();
+		Position a = new Position (x.getX(), x.getY()+step);
+		Position b = new Position (x.getX(), x.getY()+step+step);
 		
-		if(isWhite)
-		{
-			if(x.getY()-1 >= 0 && !chessBoard.isPlaced(new Position(x.getX(), x.getY()-1)))
-				result.add(new Position(x.getX(), x.getY()-1));
-			if(x.getY() == 6 && !chessBoard.isPlaced(new Position(x.getX(), 4)))
-				result.add(new Position(x.getX(),4));
-		}
-		else
-		{
-			if(x.getY()+1 <8 && !chessBoard.isPlaced(new Position(x.getX(), x.getY()+1)))
-				result.add(new Position(x.getX(), x.getY()+1));
-			if(x.getY() == 1 && !chessBoard.isPlaced(new Position(x.getX(), 3)))
-				result.add(new Position(x.getX(),3));
-		}
-		
+		if(inBounds(a) && !chessBoard.isPlaced(a))
+				result.add(a);
+		if(x.getY()==secondLine && inBounds(b) && !chessBoard.isPlaced(b) && !chessBoard.isPlaced(a))
+				result.add(b);
+
 		return result;
 	}
 }
