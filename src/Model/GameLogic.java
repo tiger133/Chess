@@ -41,12 +41,12 @@ public class GameLogic {
 	}
 	public void turn(Position x)
 	{
-		if(!moveBuffer.isBothSet())
+		
+		moveBuffer.add(x,whitePlaying);
+		
+		if(moveBuffer.isBothSet())
 		{
-			moveBuffer.add(x,whitePlaying);
-		}else
-		{
-			//TO-DO ruch ;
+			//TO-DO
 			
 			
 			
