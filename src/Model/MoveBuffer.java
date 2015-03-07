@@ -79,8 +79,8 @@ public class MoveBuffer {
 					availableSelected = true;
 				}
 			}
-			if(availableSelected) setSecond(x);
-			else clearBuffer();
+			setSecond(x);
+			if(!availableSelected) clearBuffer();
 			
 				
 		}
