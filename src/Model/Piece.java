@@ -2,12 +2,21 @@ package Model;
 
 public abstract class Piece {
 	public enum PieceType {
-		PAWN,
-		ROOK,
-		KNIGHT,
-		BISHOP,
-		QUEEN,
-		KING;
+		PAWN(1),
+		ROOK(5),
+		KNIGHT(3),
+		BISHOP(3),
+		QUEEN(9),
+		KING(Integer.MAX_VALUE);
+		private final int id;
+		PieceType(int id)
+		{
+			this.id = id;
+		}
+		public int getValue()
+		{
+			return id;
+		}
 	}
 	protected PieceType pieceType;
 	protected boolean white;
