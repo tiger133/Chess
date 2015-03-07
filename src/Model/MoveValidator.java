@@ -30,27 +30,24 @@ public class MoveValidator {
 	}
 	public List<Position> availablePawn(Position x)
 	{
-		
+		boolean isWhite = chessBoard.getPiece(x).isWhite();
 		List<Position> result = new ArrayList<Position>();
-		if(chessBoard.getPiece(x).isWhite())
+		
+		if(isWhite)
 		{
-			if(x.getY() == 6)
-			{
-				result.add(new Position(x.getX(),5));
+			if(x.getY()-1 >= 0 && !chessBoard.isPlaced(new Position(x.getX(), x.getY()-1)))
+				result.add(new Position(x.getX(), x.getY()-1));
+			if(x.getY() == 6 && !chessBoard.isPlaced(new Position(x.getX(), 4)))
 				result.add(new Position(x.getX(),4));
-			}else{
-				
-				
-			}
-		}else
-		{
-			if(x.getY() == 1)
-			{
-				result.add(new Position(x.getX(),2));
-				result.add(new Position(x.getX(),3));
-			}
 		}
-	
+		else
+		{
+			if(x.getY()+1 <8 && !chessBoard.isPlaced(new Position(x.getX(), x.getY()+1)))
+				result.add(new Position(x.getX(), x.getY()+1));
+			if(x.getY() == 1 && !chessBoard.isPlaced(new Position(x.getX(), 3)))
+				result.add(new Position(x.getX(),3));
+		}
+		
 		return result;
 	}
 }
