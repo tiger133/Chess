@@ -15,7 +15,7 @@ public class GameLogicController {
 	{
 			int xx = x/80;
 			int yy = y/80;
-			gameLogic.select(xx,yy);
+			gameLogic.turn(new Position(xx,yy));
 	}
 	
 }

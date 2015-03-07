@@ -18,10 +18,6 @@ public class Move {
 		this.piece = piece.clonePiece();
 		this.knockedOut = knockedOut.clonePiece();
 	}
-	public Move()
-	{
-		//zeby buffer dziala
-	}
 	public Position fromPosition()
 	{
 		return fromPosition;
@@ -29,14 +25,6 @@ public class Move {
 	public Position toPosition()
 	{
 		return toPosition;
-	}
-	public void setFirstPosition(Position from)
-	{
-		fromPosition = new Position(from);
-	}
-	public void setSecondPosition(Position sec)
-	{
-		toPosition = new Position(sec);
 	}
 	public Piece getPiece()
 	{
@@ -53,14 +41,5 @@ public class Move {
 	public void setKnockedOut(Piece knockedOut)
 	{
 		this.knockedOut = knockedOut;
-	}
-	public void clear()
-	{
-		toPosition = null;
-		fromPosition = null;
-	}
-	public boolean bothPositions()
-	{
-		return ((toPosition != null) && (fromPosition !=null)); 
 	}
 }

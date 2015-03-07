@@ -12,12 +12,13 @@ public class GameLogic {
 	private Player blackPlayer;
 	private GameState gameState;
 	private boolean whitePlaying = true;
-	private Move moveBuffer = new Move();
+	private MoveBuffer moveBuffer;
 	
 	
 	public GameLogic()
 	{
 		chessBoard = new ChessBoard();
+		moveBuffer = new MoveBuffer(chessBoard);
 		gameState = GameState.BeforeGame;
 		whitePlayer = new Player(true);
 		blackPlayer = new Player(false);
@@ -38,37 +39,30 @@ public class GameLogic {
 	{
 		return gameState;
 	}
-	
-	
-	public void select(int x, int y)
+	public void turn(Position x)
 	{
-		boolean isPlaced = chessBoard.select(x,y,true);
-		if((moveBuffer.fromPosition()==null)&&isPlaced) moveBuffer.setFirstPosition(new Position(x,y));
-		else if((!isPlaced)&&moveBuffer.toPosition()==null&&moveBuffer.toPosition()==null){
-			unselect(x,y);
-			moveBuffer.clear();
-			return;
-		}
-		else if((!isPlaced)&&moveBuffer.toPosition()==null) 
-			 moveBuffer.setSecondPosition(new Position(x,y));
-		//Turn : 
-		
-		
-		//End turn;
-		 if(moveBuffer.bothPositions())
+		if(!moveBuffer.isBothSet())
 		{
+			moveBuffer.add(x,whitePlaying);
+		}else
+		{
+			//TO-DO ruch ;
 			
-			unselect(moveBuffer.fromPosition().getX(),moveBuffer.fromPosition().getY());
-			unselect(moveBuffer.toPosition().getX(),moveBuffer.toPosition().getY());
-			moveBuffer.clear();
+			
+			
+			moveBuffer.clearBuffer();
 		}
-		
-		
 	}
 	
-	public void unselect(int x, int y)
+
+	public boolean select(Position x)
 	{
-		chessBoard.select(x,y,false);
+		return chessBoard.select(x,true);	
+	}
+	
+	public boolean unselect(Position x)
+	{
+		return chessBoard.select(x,false);
 	}
 
 }

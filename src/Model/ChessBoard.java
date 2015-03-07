@@ -107,6 +107,10 @@ public class ChessBoard
 			}
 		return result;
 	}
+	public Piece getPiece(Position x)
+	{
+		return gird[x.getX()][x.getY()].getPiece();
+	}
 	public void movePiece(Position from, Position to)
 	{
 		history.add(new Move(from,to,gird[from.getX()][from.getY()].getPiece()));
@@ -118,10 +122,13 @@ public class ChessBoard
 	{
 		toRemoveFrom.removePiece();
 	}
-	public boolean select(int x, int y, boolean selected)
+	public boolean select(Position x, boolean selected)
 	{
-		gird[x][y].setSelected(selected);
-		return gird[x][y].isPlaced();
+		gird[x.getX()][x.getY()].setSelected(selected);
+		return gird[x.getX()][x.getY()].isPlaced();
 	}
-
+	public boolean isPlaced(Position x)
+	{
+		return gird[x.getX()][x.getY()].isPlaced();
+	}
 }
