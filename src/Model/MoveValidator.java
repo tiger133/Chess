@@ -15,6 +15,7 @@ public class MoveValidator {
 		switch(chessBoard.getPiece(x).getPieceType())
 		{
 		case PAWN:
+				result.addAll(availablePawn(x,whitePlaying));
 			break;
 		case ROOK:
 			break;
@@ -30,5 +31,28 @@ public class MoveValidator {
 	
 		return result;
 	}
+	public List<Position> availablePawn(Position x,boolean whitePlaying)
+	{
+		List<Position> result = new ArrayList<Position>();
+		if(whitePlaying)
+		{
+			if(x.getY() == 6)
+			{
+				result.add(new Position(x.getX(),5));
+				result.add(new Position(x.getX(),4));
+			}else{
+				
+				
+			}
+		}else
+		{
+			if(x.getY() == 1)
+			{
+				result.add(new Position(x.getX(),2));
+				result.add(new Position(x.getX(),3));
+			}
+		}
 	
+		return result;
+	}
 }
