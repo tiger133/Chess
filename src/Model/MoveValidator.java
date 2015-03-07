@@ -11,12 +11,10 @@ public class MoveValidator {
 	}
 	public List<Position> availableTurns(Position x)
 	{
-		List<Position> result = new ArrayList<Position>();
 		switch(chessBoard.getPiece(x).getPieceType())
 		{
 		case PAWN:
-				result.addAll(availablePawn(x));
-			break;
+				return availablePawn(x);
 		case ROOK:
 			break;
 		case KNIGHT:
@@ -28,8 +26,7 @@ public class MoveValidator {
 		case KING:
 			break;
 		}
-	
-		return result;
+	return null;
 	}
 	public List<Position> availablePawn(Position x)
 	{
