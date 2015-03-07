@@ -32,4 +32,8 @@ public class Position
 	{
 		return y;
 	}
+	public boolean equals(Position second)
+	{
+		return ((x==second.x)&&(y==second.y));
+	}
 }

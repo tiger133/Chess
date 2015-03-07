@@ -27,7 +27,7 @@ public class MoveBuffer {
 	}
 	public boolean isOneSet()
 	{
-		return ((first!=null)&&(second==null))||((first==null)&&(second!=null));
+		return ((first!=null)&&(second==null));
 	}
 	public boolean isBothSet()
 	{
@@ -57,7 +57,7 @@ public class MoveBuffer {
 			}
 		}else if(isOneSet())
 		{
-			if(chessBoard.isPlaced(x))
+			/*if(chessBoard.isPlaced(x))
 			{	
 				if((whitePlaying && !chessBoard.getPiece(x).isWhite())
 					||(!whitePlaying && chessBoard.getPiece(x).isWhite()))
@@ -69,7 +69,19 @@ public class MoveBuffer {
 			else{
 				setSecond(x);
 				chessBoard.select(x,true);
+			}*/
+			boolean availableSelected = false;
+			for(Position pos : availableTurns)
+			{
+				System.out.println("fd");
+				if(x.equals(pos)) 
+				{
+					availableSelected = true;
+				}
 			}
+			if(availableSelected) setSecond(x);
+			else clearBuffer();
+			
 				
 		}
 	}
