@@ -53,7 +53,7 @@ public class GameLogic {
 			moveBuffer.clearBuffer();
 		}else if(moveBuffer.isOneSet())
 		{
-			moveBuffer.addAvailableTurns(moveValidator.availableTurns(x,whitePlaying));;
+			moveBuffer.addAvailableTurns(moveValidator.availableTurns(x));;
 		}
 	}
 	

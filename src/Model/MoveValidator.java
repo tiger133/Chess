@@ -9,13 +9,13 @@ public class MoveValidator {
 	{
 		this.chessBoard = chessBoard;
 	}
-	public List<Position> availableTurns(Position x,boolean whitePlaying)
+	public List<Position> availableTurns(Position x)
 	{
 		List<Position> result = new ArrayList<Position>();
 		switch(chessBoard.getPiece(x).getPieceType())
 		{
 		case PAWN:
-				result.addAll(availablePawn(x,whitePlaying));
+				result.addAll(availablePawn(x));
 			break;
 		case ROOK:
 			break;
@@ -31,10 +31,11 @@ public class MoveValidator {
 	
 		return result;
 	}
-	public List<Position> availablePawn(Position x,boolean whitePlaying)
+	public List<Position> availablePawn(Position x)
 	{
+		
 		List<Position> result = new ArrayList<Position>();
-		if(whitePlaying)
+		if(chessBoard.getPiece(x).isWhite())
 		{
 			if(x.getY() == 6)
 			{
