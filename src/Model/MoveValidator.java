@@ -26,7 +26,8 @@ public class MoveValidator {
 		case ROOK:
 			break;
 		case KNIGHT:
-			break;
+				return availableKnight(x);
+	
 		case BISHOP:
 			break;
 		case QUEEN:
@@ -57,4 +58,26 @@ public class MoveValidator {
 			result.add(d);
 		return result;
 	}
+	public List<Position> availableKnight(Position x)
+	{
+		boolean isWhite = chessBoard.getPiece(x).isWhite();
+		List<Position> result = new ArrayList<Position>();
+		for(int i = -1;i<2;i+=2)
+		  {
+		   for(int j=-1; j<2; j+=2)
+		   {
+		    Position a = new Position(x.getX()+i*1, x.getY()+j*2);
+		    Position b = new Position(x.getX()+i*2, x.getY()+j*1);
+		    
+		    if(inBounds(a) && !chessBoard.isPlaced(a) ||(
+		      inBounds(a) && chessBoard.isPlaced(a) && chessBoard.getPiece(a).isWhite()!=isWhite))
+		     result.add(a);
+		    if(inBounds(b) && !chessBoard.isPlaced(b) || (
+		      inBounds(b) && chessBoard.isPlaced(b) && chessBoard.getPiece(b).isWhite()!=isWhite) )
+		     result.add(b);
+		   }
+		  }
+		return result;
+	}
+
 }
