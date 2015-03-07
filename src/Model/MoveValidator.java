@@ -24,7 +24,7 @@ public class MoveValidator {
 		case PAWN:
 				return availablePawn(x);
 		case ROOK:
-			break;
+				return availableRook(x);
 		case KNIGHT:
 				return availableKnight(x);
 		case BISHOP:
@@ -92,5 +92,11 @@ public class MoveValidator {
 
 			}
 		return result;	
+	}
+	public List<Position> availableRook(Position x)
+	{
+		
+		
+		return null;
 	}
 }
