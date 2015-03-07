@@ -95,8 +95,64 @@ public class MoveValidator {
 	}
 	public List<Position> availableRook(Position x)
 	{
-		
-		
-		return null;
+		boolean isWhite = chessBoard.getPiece(x).isWhite();
+		List<Position> result = new ArrayList<Position>();
+		//north 
+		for(int i = x.getY()-1 ;i>=0;i--)
+		{
+			Position a = new Position(x.getX(),i);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//East
+		for(int i = x.getX()+1 ;i<=7;i++)
+		{
+			Position a = new Position(i,x.getY());
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//South
+		for(int i = x.getY()+1 ;i<=7;i++)
+		{
+			Position a = new Position(x.getX(),i);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//West
+		for(int i = x.getX()-1 ;i>=0;i--)
+		{
+			Position a = new Position(i,x.getY());
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		return result;
 	}
 }
