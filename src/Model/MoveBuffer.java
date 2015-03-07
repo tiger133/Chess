@@ -57,23 +57,9 @@ public class MoveBuffer {
 			}
 		}else if(isOneSet())
 		{
-			/*if(chessBoard.isPlaced(x))
-			{	
-				if((whitePlaying && !chessBoard.getPiece(x).isWhite())
-					||(!whitePlaying && chessBoard.getPiece(x).isWhite()))
-				{ // playerWhite xor whitePiece
-					setSecond(x);
-					chessBoard.select(x,true);
-				}
-			}
-			else{
-				setSecond(x);
-				chessBoard.select(x,true);
-			}*/
 			boolean availableSelected = false;
 			for(Position pos : availableTurns)
 			{
-				System.out.println("fd");
 				if(x.equals(pos)) 
 				{
 					availableSelected = true;

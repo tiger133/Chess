@@ -36,4 +36,13 @@ public class Position
 	{
 		return ((x==second.x)&&(y==second.y));
 	}
+	public String toString()
+	{
+		StringBuffer stringBuffer = new StringBuffer(2);
+		char ch = 'a';
+		ch+=x;
+		stringBuffer.append(ch);
+		stringBuffer.append(8-y);
+		return stringBuffer.toString();
+	}
 }

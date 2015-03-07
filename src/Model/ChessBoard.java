@@ -117,6 +117,7 @@ public class ChessBoard
 		Piece tmp = gird[from.getX()][from.getY()].getPiece();
 		gird[from.getX()][from.getY()].removePiece();
 		gird[to.getX()][to.getY()].setPiece(tmp);
+		System.out.println(from+" -> "+to);
 	}
 	public void removePiece(Square toRemoveFrom)
 	{
