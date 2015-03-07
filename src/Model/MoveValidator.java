@@ -27,13 +27,12 @@ public class MoveValidator {
 			break;
 		case KNIGHT:
 				return availableKnight(x);
-	
 		case BISHOP:
 			break;
 		case QUEEN:
 			break;
 		case KING:
-			break;
+			return availableKing(x);
 		}
 	return null;
 	}
@@ -79,5 +78,19 @@ public class MoveValidator {
 		  }
 		return result;
 	}
+	public List<Position> availableKing(Position x)
+	{
+		boolean isWhite = chessBoard.getPiece(x).isWhite();
+		List<Position> result = new ArrayList<Position>();
+		for(int i = x.getX()-1; i<x.getX()+2;i++)
+			for(int j = x.getY()-1;j<x.getY()+2;j++)
+			{	
+				Position a = new Position(i,j);
+			    if(inBounds(a) && !chessBoard.isPlaced(a) ||
+				  (inBounds(a) && chessBoard.isPlaced(a) && chessBoard.getPiece(a).isWhite()!=isWhite))
+			    		result.add(a);	
 
+			}
+		return result;	
+	}
 }
