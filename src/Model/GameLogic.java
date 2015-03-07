@@ -41,19 +41,15 @@ public class GameLogic {
 	}
 	public void turn(Position x)
 	{
-		
 		moveBuffer.add(x,whitePlaying);
 		
 		if(moveBuffer.isBothSet())
 		{
-			//TO-DO
-			
-			
-			
+			chessBoard.movePiece(moveBuffer.getFirst(), moveBuffer.getSecond());
 			moveBuffer.clearBuffer();
 		}
 	}
-	
+
 
 	public boolean select(Position x)
 	{
