@@ -36,7 +36,7 @@ public class MoveValidator {
 		}
 	return null;
 	}
-	public List<Position> availablePawn(Position x)
+	public List<Position> availablePawn(Position x) //TO_DO bicie w przelocie, zamiana na damke
 	{
 		boolean isWhite = chessBoard.getPiece(x).isWhite();
 		int step = isWhite ? -1 : 1;
@@ -44,12 +44,17 @@ public class MoveValidator {
 		List<Position> result = new ArrayList<Position>();
 		Position a = new Position (x.getX(), x.getY()+step);
 		Position b = new Position (x.getX(), x.getY()+step+step);
+		Position c = new Position (x.getX()-1, x.getY()+step); // po skosie i w lewo
+		Position d = new Position (x.getX()+1, x.getY()+step); // po skosie i w prawo
 		
 		if(inBounds(a) && !chessBoard.isPlaced(a))
 				result.add(a);
 		if(x.getY()==secondLine && inBounds(b) && !chessBoard.isPlaced(b) && !chessBoard.isPlaced(a))
 				result.add(b);
-
+		if(inBounds(c) && chessBoard.isPlaced(c) && chessBoard.getPiece(c).isWhite()!=isWhite)
+				result.add(c);
+		if(inBounds(d) && chessBoard.isPlaced(d) && chessBoard.getPiece(d).isWhite()!=isWhite)
+			result.add(d);
 		return result;
 	}
 }
