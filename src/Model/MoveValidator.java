@@ -28,11 +28,11 @@ public class MoveValidator {
 		case KNIGHT:
 				return availableKnight(x);
 		case BISHOP:
-			break;
+				return availableBishop(x);
 		case QUEEN:
-			break;
+				return availableQueen(x);
 		case KING:
-			return availableKing(x);
+				return availableKing(x);
 		}
 	return null;
 	}
@@ -154,5 +154,78 @@ public class MoveValidator {
 			}	
 		}
 		return result;
+	}
+	public List<Position> availableBishop(Position x)
+	{
+		boolean isWhite = chessBoard.getPiece(x).isWhite();
+		List<Position> result = new ArrayList<Position>();
+		
+		
+		//North - East
+		for(int i = x.getX()+1,j =x.getY()-1; i<8&&j>=0;i++,j--)
+		{
+			Position a = new Position(i,j);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//South-East
+		for(int i = x.getX()+1,j =x.getY()+1; i<8&&j<8;i++,j++)
+		{
+			Position a = new Position(i,j);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//South-West
+		for(int i = x.getX()-1,j =x.getY()+1; i>=0&&j<8;i--,j++)
+		{
+			Position a = new Position(i,j);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		//North-West
+		for(int i = x.getX()-1,j =x.getY()-1; i>=0&&j>=0;i--,j--)
+		{
+			Position a = new Position(i,j);
+			if( !chessBoard.isPlaced(a))
+			{
+							result.add(a);	
+			} else if(chessBoard.isPlaced(a))
+			{
+				 if (chessBoard.getPiece(a).isWhite()!=isWhite)
+					result.add(a);
+				break;
+			}	
+		}
+		
+		return result;	
+	}
+	public List<Position> availableQueen(Position x)
+	{
+		List<Position> result = new ArrayList<Position>();
+		result.addAll(availableBishop(x));
+		result.addAll(availableRook(x));
+		return result;
+		
 	}
 }
