@@ -13,7 +13,7 @@ public class GameLogic {
 	private GameState gameState;
 	private boolean whitePlaying = true;
 	private MoveBuffer moveBuffer;
-	
+	//private MoveValidator moveValidator;
 	
 	public GameLogic()
 	{
@@ -25,7 +25,6 @@ public class GameLogic {
 		List<Piece> pieces = chessBoard.getPieces();
 		whitePlayer.setPieces(pieces);
 		blackPlayer.setPieces(pieces);
-		
 	}
 	public ChessBoard getChessBoard()
 	{
@@ -43,7 +42,10 @@ public class GameLogic {
 	{
 		
 		moveBuffer.add(x,whitePlaying);
-		
+		if(moveBuffer.isOneSet())
+		{
+			moveValidator.availableTurns();
+		}
 		if(moveBuffer.isBothSet())
 		{
 			//TO-DO
