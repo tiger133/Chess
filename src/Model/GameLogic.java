@@ -39,6 +39,11 @@ public class GameLogic {
 	{
 		return gameState;
 	}
+	private void move()
+	{
+		chessBoard.movePiece(moveBuffer.getFirst(), moveBuffer.getSecond());
+		whitePlaying = !whitePlaying;
+	}
 	public void turn(Position x)
 	{
 		
@@ -46,8 +51,7 @@ public class GameLogic {
 		
 		if(moveBuffer.isBothSet())
 		{
-			chessBoard.movePiece(moveBuffer.getFirst(), moveBuffer.getSecond());
-			
+			move();
 			
 			
 			moveBuffer.clearBuffer();
